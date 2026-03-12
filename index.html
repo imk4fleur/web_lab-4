@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Погода</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 class="title">Прогноз погоды</h1>
+      <div id="locationLabel" class="location-label" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main id="appRoot" class="container">
+    <section id="controlsPanel" class="controls-panel" aria-label="Панель управления">
+      <div class="left-controls">
+        <button id="btn-refresh" class="action action--primary" type="button" title="Обновить все карточки">⟳ Обновить</button>
+        <button id="btn-geo" class="action action--ghost" type="button" title="Использовать текущее местоположение">По местоположению</button>
+      </div>
+
+      <form id="cityForm" class="city-form" onsubmit="return false;" aria-label="Добавление города">
+        <div class="input-wrap">
+          <input id="city-search" type="text" autocomplete="off" placeholder="Добавить город" aria-autocomplete="list" />
+          <ul id="city-suggestions" class="suggestions" role="listbox" aria-label="Подсказки городов"></ul>
+        </div>
+        <button id="btn-add" class="action action--accent" type="button">Добавить</button>
+        <div id="input-error" class="form-error" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite">
+    </section>
+
+    <footer class="footer">
+      <small>Сохранение в localStorage. Источник данных: Open-Meteo.</small>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
